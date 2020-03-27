@@ -3,12 +3,12 @@ import json
 from utilities.azure_devops_interface import azure_devops_interface
 
 def lambda_handler(event, context):
-    # TODO implement
+    f = azure_devops_interface()
+    f.passthrough_method('Derp')
+    
     return {
         'statusCode': 200,
-        'body': json.dumps('Hello from Lambda - MODIFIED!')
+        'body': json.dumps('azure_devops_interface did stuff.')
     }
 
 
-f = azure_devops_interface()
-f.passthrough_method('Derp')

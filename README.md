@@ -13,3 +13,11 @@ Grandiose Plans:
 - React.js configurator!
 - Query Jira
 - Query stored procs
+
+Cheaty Commands:
+- activate venv: source .venv/bin/activate
+- deactivate venv: deactivate
+- update requirements.txt: pip freeze > requirements.txt
+- update function.zip file for AWS upload:
+  - in site-packages: zip -r9 function.zip .
+  - move file to root, then: zip -r function.zip .
