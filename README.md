@@ -21,3 +21,8 @@ Cheaty Commands:
 - update function.zip file for AWS upload:
   - in site-packages: zip -r9 function.zip .
   - move file to root, then: zip -r function.zip .
+
+
+Database stuff to store:
+- Per client:
+  - AzureDevOps URI and Personal Access Token
