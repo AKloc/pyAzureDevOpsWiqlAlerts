@@ -26,3 +26,8 @@ Cheaty Commands:
 Database stuff to store:
 - Per client:
   - AzureDevOps URI and Personal Access Token
+
+Local development:
+- Create ~/.bash_profile if it doesn't exist
+- Add variables for Azure DevOps URI and personal access token
+- source ~/.bash_profile

@@ -37,13 +37,15 @@ class azure_devops_interface:
         if query_result.columns:
             for field_ref in query_result.columns:
                 fields.append(field_ref.reference_name)
-        
-        
 
-
+        work_item_ids = []
+        for work_item_ref in query_result.work_items:
+            work_item_ids.append(work_item_ref.id)
+        
         #for work_item_ref in query_result.work_items:
-        work_items = self._azure_devops_client.get_work_items(ids=query_result.work_items, fields=fields)
+        work_items = self._azure_devops_client.get_work_items(ids=work_item_ids, as_of = query_result.as_of, fields=fields)
         
+
 
         pass
 
