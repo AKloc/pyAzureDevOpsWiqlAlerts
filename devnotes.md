@@ -14,14 +14,20 @@ DynamoDB Schema:
 - Alert items:
 
 ```javascript
-    "alert": {
-        "alert_name": "string",
-        "azure_devops_query": {
-            "query_id": "string",
-            "query_uri": "http://whatever.com",
-            "query_api_token"
-        },
-        "slack_webhook_ui": "http://slack.com"
+    {
+        "alerts": [{
+            "alert_name": "string",
+            "azure_devops_query": {
+                "query_id": "string",
+                "query_uri": "http://whatever.com",
+                "api_token": "token"
+            },
+            "cron_schedule": "cron",
+            "slack_webhook_ui": "http://slack.com",
+            "formatting_f_string_header": "something something something",
+            "formatting_f_string_item": "something something something",
+            "formatting_f_string_footer": "something something something"
+        }]
     }
 ```
 
