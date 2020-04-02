@@ -1,6 +1,6 @@
-# pyAzureDevOpsWiqlAlerts - dev notes
+# pyAzureDevOpsWiqlAlerts - Development Notes
 
-Cheaty Commands:
+## Cheaty Commands
 
 - activate venv: source .venv/bin/activate
 - deactivate venv: deactivate
@@ -9,7 +9,7 @@ Cheaty Commands:
   - in site-packages: zip -r9 function.zip .
   - move file to root, then: zip -r function.zip .
 
-DynamoDB Schema:
+## DynamoDB Schema
 
 - Alert items:
 
@@ -31,11 +31,7 @@ DynamoDB Schema:
     }
 ```
 
-Per client:
-
-- AzureDevOps URI and Personal Access Token
-
-Local development:
+## Local development
 
 - Create ~/.bash_profile if it doesn't exist
 - Add variables for Azure DevOps URI and personal access token
