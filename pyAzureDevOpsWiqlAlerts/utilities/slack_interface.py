@@ -1,13 +1,15 @@
 #! python3
+import slack
 
 class slack_interface:
 
     def __init__ (self, slack_api_uri):
         self._slack_api_uri = slack_api_uri
+        self._client = slack.WebClient(token=self._slack_api_uri)
         pass
 
     def send_message(self, message, attachments, channel):
-
+        self._client.chat_postMessage(channel=channel, text=message)
             # // If there are any announcement messages to print, do so here in italics. These are pulled from the 
             # //   ADDITIONAL_ANNOUCNEMENT_MESSAGE_TO_DISPLAY_PER_MESSAGE app setting in Azure Portal.
             # if (!string.IsNullOrEmpty(_additionalAnnouncementMessageToDisplayPerMessage))
@@ -35,7 +37,6 @@ class slack_interface:
         pass
 
     def replace_html_with_markdown(self, str):
-        str = ''
 
         str.replace('<div>', '')
         str.replace('</div>', '')
