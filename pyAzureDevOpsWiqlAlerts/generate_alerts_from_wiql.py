@@ -1,7 +1,7 @@
 #!python3
 import json
 import os
-from utilities.azure_devops_interface import azure_devops_interface
+from pyAzureDevOpsWiqlAlerts.utilities import azure_devops_interface
 
 def lambda_handler(event, context):
     # Fetch AWS environment variables
