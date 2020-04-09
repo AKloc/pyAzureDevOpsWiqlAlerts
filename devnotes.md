@@ -1,11 +1,11 @@
 # pyAzureDevOpsWiqlAlerts - Development Notes
 
-## Cheaty Commands
+## Noob Command Reminders
 
-- activate venv: source .venv/bin/activate
-- deactivate venv: deactivate
-- update requirements.txt: pip freeze > requirements.txt
-- update function.zip file for AWS upload:
+- To create a python virtual environment: source .venv/bin/activate
+- Deactivate pyhton venv: deactivate
+- To update requirements.txt: pip freeze > requirements.txt
+- Creating function.zip file for AWS upload:
   - in site-packages: zip -r9 function.zip .
   - move file to root, then: zip -r function.zip .
 
@@ -33,6 +33,8 @@
 
 ## Local development
 
+### Creating Environment Variables
+
 - Create ~/.bash_profile if it doesn't exist
-- Add variables for Azure DevOps URI and personal access token
+- Add environment variables for azure_devops_access_token, azure_devops_uri, aws_access_key, aws_secret_access_key
 - source ~/.bash_profile
