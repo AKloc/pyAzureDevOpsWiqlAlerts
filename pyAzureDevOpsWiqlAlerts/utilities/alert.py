@@ -45,5 +45,10 @@ class Alert:
         self._slack_webhook_uri = value
         self._slack_interface = SlackInterface(self._slack_webhook_uri)
 
-    def process(self, message):
-        self._slack_interface.send_message(message=message, channel=None)
+    def process(self):
+        query_results = self._azure_devops_interface.get_azure_devops_work_items_from_query_id(
+            query_id=self._azure_devops_query_config['query_id'])
+
+        message = f'Ran query \'{self._alert_name}\', returned {str(len(query_results))} results.'
+
+        self._slack_interface.send_message(message=message)
