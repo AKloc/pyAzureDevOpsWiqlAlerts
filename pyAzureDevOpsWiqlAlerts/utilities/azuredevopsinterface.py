@@ -6,7 +6,7 @@ from azure.devops.v6_0.work_item_tracking.models import Wiql
 
 class AzureDevopsInterface:
 
-    def __init__(self, uri, personal_access_token):
+    def __init__(self, uri: str, personal_access_token: str) -> None:
         print(f'azure_devops_interface constructor called with uri={uri} and PAT={personal_access_token}')
         self._uri = uri
         self._personal_access_token = personal_access_token
@@ -15,16 +15,16 @@ class AzureDevopsInterface:
         self._azure_devops_client = \
             self._connection.clients_v6_0.get_work_item_tracking_client()
 
-    def get_azure_devops_work_items_from_query_id(self, query_id: str) -> None:
+    def get_azure_devops_work_items_from_query_id(self, query_id: str) -> []:
         query_result = self._azure_devops_client.query_by_id(id=query_id)
-        self.map_work_item_references_to_dtos(query_result)
+        return self.map_work_item_references_to_dtos(query_result)
 
-    def get_azure_devops_work_items_from_wiql_query(self, wiql_query: str) -> None:
+    def get_azure_devops_work_items_from_wiql_query(self, wiql_query: str) -> []:
         query_wiql = Wiql(query=wiql_query)
         query_result = self._azure_devops_client.query_wiql(query_wiql).work_items
-        self.map_work_item_references_to_dtos(query_result)
+        return self.map_work_item_references_to_dtos(query_result)
 
-    def map_work_item_references_to_dtos(self, query_result):
+    def map_work_item_references_to_dtos(self, query_result: []) -> []:
         if not query_result.work_items:
             return None
 
@@ -43,7 +43,7 @@ class AzureDevopsInterface:
         work_items = self._azure_devops_client.get_work_items(ids=work_item_ids, as_of=query_result.as_of,
                                                               fields=fields)
 
-        pass
+        return work_items
 
         #         List<AzureDevOpsWorkItemDto> results = new List<AzureDevOpsWorkItemDto>();
 

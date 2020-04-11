@@ -1,7 +1,7 @@
 #!python3
 import json
 import os
-from pyAzureDevOpsWiqlAlerts.utilities import azure_devops_interface
+from pyAzureDevOpsWiqlAlerts.utilities import azuredevopsinterface
 
 def lambda_handler(event, context):
     # Fetch AWS environment variables
@@ -15,7 +15,7 @@ def lambda_handler(event, context):
     else:
         azure_devops_access_token = 'no access token set'
     
-    f = azure_devops_interface(azure_devops_uri, azure_devops_access_token)
+    f = azuredevopsinterface(azure_devops_uri, azure_devops_access_token)
     f.passthrough_method('Derp')
 
     f.get_azure_devops_work_items_from_query_id(\
