@@ -4,7 +4,7 @@ from slack_webhook import Slack
 
 class SlackInterface:
 
-    def __init__(self, slack_api_uri):
+    def __init__(self, slack_api_uri: str) -> None:
         print('Building slack interface. URI = ' + slack_api_uri)
         self._slack_api_uri = slack_api_uri
         self._client = Slack(url=self._slack_api_uri)
@@ -39,10 +39,10 @@ class SlackInterface:
 
         pass
 
-    def replace_html_with_markdown(self, str):
-        str.replace('<div>', '')
-        str.replace('</div>', '')
-        str.replace('<div/>', '')
+    def replace_html_with_markdown(self, html: str) -> str:
+        html.replace('<div>', '')
+        html.replace('</div>', '')
+        html.replace('<div/>', '')
 
         #         //regex: \[(.*?)\]+\((.*?)\)
         # Regex vstsLinkRegex = new Regex(@"\[(.*?)\]+\((.*?)\)");
@@ -72,10 +72,10 @@ class SlackInterface:
 
         # return str;
 
-        return str
+        return html
 
-    def get_link_from_work_item_id(self, base_url, id):
+    def get_link_from_work_item_id(self, base_url: str, id:str) -> str:
         pass
 
-    def get_slack_formatted_link(self, url, text):
+    def get_slack_formatted_link(self, url: str, text:str) -> str:
         pass
