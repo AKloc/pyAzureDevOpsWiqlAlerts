@@ -1,6 +1,6 @@
 #!python3
 import json
-from pyAzureDevOpsWiqlAlerts.utilities.alertsgenerator import AlertsGenerator
+from utilities.alertsgenerator import AlertsGenerator
 
 def lambda_handler(event, context):
     # Fetch AWS environment variables

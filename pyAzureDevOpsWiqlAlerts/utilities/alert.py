@@ -1,6 +1,6 @@
 #! python3
-from pyAzureDevOpsWiqlAlerts.utilities.azuredevopsinterface import AzureDevopsInterface
-from pyAzureDevOpsWiqlAlerts.utilities.slackinterface import SlackInterface
+from .azuredevopsinterface import AzureDevopsInterface
+from .slackinterface import SlackInterface
 
 
 class Alert:
