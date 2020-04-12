@@ -1,6 +1,6 @@
 #! python3
-from pyAzureDevOpsWiqlAlerts.utilities.alert import Alert
 import boto3
+from .alert import Alert
 
 
 # Note - need to have AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
