@@ -25,7 +25,3 @@ class AlertsGenerator:
             alert_to_process.azure_devops_query_config = alert_config['azure_devops_query']
 
             alert_to_process.process()
-
-
-
-derp = AlertsGenerator()
