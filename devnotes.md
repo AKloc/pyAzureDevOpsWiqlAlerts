@@ -31,6 +31,11 @@
     }
 ```
 
+### Supported variables for substitutions:
+
+- {TOTAL_NUM_ITEMS}: The total number of rows returned by the query. Works in any field.
+- {fieldname}: Displays the value for the current item for the specified fieldname. Works only in the "formatting_f_string_item" field.
+
 ## Local development
 
 ### Creating Environment Variables
