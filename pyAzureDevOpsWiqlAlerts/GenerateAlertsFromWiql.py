@@ -1,10 +1,10 @@
 #!python3
 import json
-from pyAzureDevOpsWiqlAlerts.utilities.AlertProcessor import AlertsProcessor
+from pyAzureDevOpsWiqlAlerts.utilities.AlertProcessor import AlertProcessor
 
 def lambda_handler(event, context):
 
-    alerts_generator = AlertsProcessor()
+    alerts_generator = AlertProcessor()
     alerts_generator.process_alerts()
 
     return {
