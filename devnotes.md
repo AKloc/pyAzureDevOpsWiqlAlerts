@@ -24,9 +24,9 @@
             },
             "cron_schedule": "cron",
             "slack_webhook_ui": "http://slack.com",
-            "formatting_f_string_header": "something something something",
-            "formatting_f_string_item": "something something something",
-            "formatting_f_string_footer": "something something something"
+            "f_string_header": "something something something",
+            "f_string_item": "something something something",
+            "f_string_footer": "something something something"
         }]
     }
 ```

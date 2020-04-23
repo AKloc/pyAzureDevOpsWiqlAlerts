@@ -5,7 +5,7 @@ from .alert import Alert
 
 # Note - need to have AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
 # environment variables.
-class AlertsGenerator:
+class AlertsProcessor:
     def __init__(self):
         self._dynamodb_connection = boto3.resource('dynamodb', region_name='us-east-1')
         alerts_table = self._dynamodb_connection.Table('alerts')
