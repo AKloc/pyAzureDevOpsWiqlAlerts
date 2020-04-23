@@ -6,11 +6,15 @@ import re
 
 class Alert:
 
-    def __init__(self, alert_name, slack_webhook_uri):
-        print('Building alert.')
-        self._alert_name = alert_name
-        self._slack_webhook_uri = slack_webhook_uri
-        self._slack_interface = SlackInterface(self._slack_webhook_uri)
+    def __init__(self, alert_name, slack_webhook_uri, azure_devops_query_config=None, f_string_header='', f_string_footer='',
+                 f_string_item=''):
+        self.alert_name = alert_name
+        self.slack_webhook_uri = slack_webhook_uri
+        if azure_devops_query_config is not None:
+            self.azure_devops_query_config = azure_devops_query_config
+        self.f_string_header = f_string_header
+        self.f_string_footer = f_string_footer
+        self.f_string_item = f_string_item
 
     @property
     def alert_name(self):
@@ -26,13 +30,10 @@ class Alert:
 
     @azure_devops_query_config.setter
     def azure_devops_query_config(self, value):
-        if 'api_token' in value and 'query_id' in value \
-                and 'query_uri' in value:
+        if 'api_token' in value and 'query_id' in value and 'query_uri' in value:
             self._azure_devops_query_config = value
-
         else:
-            raise ValueError('api_token, query_id, and query_uri \
-                must be defined in the dictionary.')
+            raise ValueError('api_token, query_id, and query_uri must be defined in the dictionary.')
 
     @property
     def slack_webhook_uri(self):
@@ -42,6 +43,31 @@ class Alert:
     def slack_webhook_uri(self, value):
         self._slack_webhook_uri = value
         self._slack_interface = SlackInterface(self._slack_webhook_uri)
+
+    @property
+    def f_string_header(self):
+        return self._f_string_header
+
+    @f_string_header.setter
+    def f_string_header(self, value):
+        self._f_string_header = value
+
+    @property
+    def f_string_footer(self):
+        return self._f_string_footer
+
+    @f_string_footer.setter
+    def f_string_footer(self, value):
+        self._f_string_footer = value
+
+    @property
+    def f_string_item(self):
+        return self._f_string_item
+
+    @f_string_item.setter
+    def f_string_item(self, value):
+        self._f_string_item = value
+
 
     def process(self):
         self._azure_devops_interface = AzureDevopsInterface(
@@ -58,21 +84,20 @@ class Alert:
 
         self._slack_interface.send_message(message=message)
 
-    def format_message(self, query_results: {}) -> str:
-        # First, get the raw f-strings.
-        item_raw: str = self._azure_devops_query_config['formatting_f_string_item']
-        formatted_header: str = self._azure_devops_query_config['formatting_f_string_header']
-        formatted_footer: str = self._azure_devops_query_config['formatting_f_string_footer']
+    def format_message(self, query_results: []) -> str:
         formatted_items: str = ''
 
-        formatted_header = formatted_header.replace('{TOTAL_NUM_ITEMS}', {str(len(query_results))})
-        formatted_footer = formatted_footer.replace('{TOTAL_NUM_ITEMS}', {str(len(query_results))})
+        if self._f_string_header:
+            formatted_header = self._f_string_header.replace('{TOTAL_NUM_ITEMS}', str(len(query_results)))
 
-        for result_row in query_results:
-            formatted_items += self.substitute_result_values_into_f_string(query_results)
+        if self._f_string_footer:
+            formatted_footer = self._f_string_footer.replace('{TOTAL_NUM_ITEMS}', str(len(query_results)))
 
-        # substitute strings
-        return "derp"
+        if self._f_string_item:
+            for result_row in query_results:
+                formatted_items += self.substitute_result_values_into_f_string(self._f_string_item, result_row.fields) + '\n'
+
+        return formatted_header + '\n' + formatted_items + '\n' + formatted_footer
 
     def substitute_result_values_into_f_string(self, f_string: str, result_row: {}) -> str:
 
