@@ -1,5 +1,7 @@
 #!python3
 import json
+import sys
+sys.path.append("/opt/") # needed to use AWS layers.
 from pyAzureDevOpsWiqlAlerts.utilities.AlertProcessor import AlertProcessor
 
 def lambda_handler(event, context):
