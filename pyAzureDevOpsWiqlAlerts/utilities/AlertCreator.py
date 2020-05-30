@@ -8,7 +8,7 @@ class AlertCreator:
         self._alerts_table = self._dynamodb_connection.Table('alerts')
 
     def create_item(self, alert_name, slack_webhook_uri, azure_devops_query_config, f_string_header='',
-                 f_string_footer='', f_string_item=''):
+                    f_string_footer='', f_string_item=''):
         response = self._alerts_table.put_item(
             Item={
                 'alert_name': alert_name,
