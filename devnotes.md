@@ -7,29 +7,31 @@
 - To update requirements.txt: ```pip freeze > requirements.txt```
 - Creating function.zip file for AWS upload:
   - in site-packages: ```zip -r9 function.zip .```
-  - move file to root, then: ```zip -r function.zip .```
+  - move file to pyAzureDevOpsWiqlAlerts (not the root), then: ```zip -r function.zip .```
 
 ## DynamoDB Schema
 
 - Alert items:
 
 ```javascript
-    {
-        "alerts": [{
-            "alert_name": "string",
-            "azure_devops_query": {
-                "query_id": "string",
-                "query_uri": "http://whatever.com",
-                "api_token": "token"
-            },
-            "cron_schedule": "cron",
-            "slack_webhook_ui": "http://slack.com",
-            "f_string_header": "something something something",
-            "f_string_item": "something something something",
-            "f_string_footer": "something something something"
-        }]
-    }
+{
+  "alert_name": "Refined Tickets Notification",
+  "azure_devops_query": {
+    "api_token": "g5akdvjbflazkpwtfiei5xbeuicktscjqenk5yxun3ih2ttqidqq",
+    "query_id": "705fc4ed-11f7-41f1-bdf0-e3f0197a4598",
+    "query_uri": "https://dev.azure.com/liazon"
+  },
+  "cron_schedule": "cron",
+  "enabled": false,
+  "f_string_footer": "Here's the footer. Total number of items = {TOTAL_NUM_ITEMS}",
+  "f_string_header": "Here's the header. Total number of items = {TOTAL_NUM_ITEMS}",
+  "f_string_item": "Here's an item. Title: {System.Title} ID: {System.ID} WorkItemType: {System.WorkItemType}",
+  "owner": "Weyland Yutani",
+  "slack_webhook_uri": "https://hooks.slack.com/services/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"
+}
 ```
+
+##
 
 ### Supported variables for substitutions:
 
