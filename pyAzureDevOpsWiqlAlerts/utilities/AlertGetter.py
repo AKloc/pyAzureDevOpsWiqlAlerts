@@ -16,6 +16,12 @@ class AlertGetter:
         )
         return response['Items']
 
+    def get_item(self, alert_name):
+        response = self._alerts_table.query(
+            IndexName = 'alert_name-index',
+            KeyConditionExpression=Key('alert_name').eq(alert_name)
+        )
+        return response['Items']
 
 derp = AlertGetter('Weyland Yutani')
 items = derp.get_items()
