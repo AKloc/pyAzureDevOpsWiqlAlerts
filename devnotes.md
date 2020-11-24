@@ -17,9 +17,9 @@
 {
   "alert_name": "Refined Tickets Notification",
   "azure_devops_query": {
-    "api_token": "g5akdvjbflazkpwtfiei5xbeuicktscjqenk5yxun3ih2ttqidqq",
+    "api_token": "y",
     "query_id": "705fc4ed-11f7-41f1-bdf0-e3f0197a4598",
-    "query_uri": "https://dev.azure.com/liazon"
+    "query_uri": "https://dev.azure.com/x"
   },
   "cron_schedule": "cron",
   "enabled": false,
